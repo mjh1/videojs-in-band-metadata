@@ -1,0 +1,10 @@
+#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-TARGETDURATION:6
+#EXT-X-MEDIA-SEQUENCE:4
+#EXTINF:6.0,
+u3uy8s4z_media_5.ts
+#EXTINF:6.0,
+u3uy8s4z_media_6.ts
+#EXTINF:6.0,
+u3uy8s4z_media_7.ts

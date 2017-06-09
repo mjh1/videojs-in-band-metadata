@@ -1,0 +1,60 @@
+<html>
+<body>
+<video id=example-video width=600 height=300 class="video-js vjs-default-skin" controls>
+  <source
+    src='http://localhost:8000/hls-media/playlist_vod.m3u8'
+    type='application/x-mpegURL'
+    useCueTags=true>
+</video>
+<script src="node_modules/video.js/dist/video.js"></script>
+<script src="node_modules/videojs-contrib-hls/dist/videojs-contrib-hls.min.js"></script>
+<script>
+videojs('example-video', {}, function() {
+
+    var player = this;
+    player.one("loadedmetadata",function(){
+      console.log(player.textTracks().length)
+      var tt = player.textTracks()[0];
+      tt.oncuechange = function() {
+        if(tt.activeCues[0] !== undefined){
+          var dynamicHTML = "id: " + tt.activeCues[0].id + ", ";
+          dynamicHTML += "text: " + tt.activeCues[0].text + ", ";
+          dynamicHTML += "startTime: " + tt.activeCues[0].startTime + ",  ";
+          dynamicHTML += "endTime: " + tt.activeCues[0].endTime;
+          document.getElementById("insertionPoint").innerHTML += dynamicHTML + "<br/>";
+        }
+      }
+      player.play();
+    });
+
+/*let textTracks = this.textTracks();
+let cuesTrack;
+
+console.log("hello");
+console.log("texttracks: " + textTracks);
+console.log("texttracks: " + textTracks.length);
+
+for (let i = 0; i < textTracks.length; i++) {
+  if (textTracks[i].label === 'ad-cues') {
+    cuesTrack = textTracks[i];
+  }
+}*/
+/*
+cuesTrack.addEventListener('cuechange', function() {
+  let activeCues = cuesTrack.activeCues;
+  for (let i = 0; i < activeCues.length; i++) {
+    let activeCue = activeCues[i];
+    console.log('Cue runs from ' + activeCue.startTime +
+    ' to ' + activeCue.endTime);
+  }
+});
+*/
+
+});
+
+
+//player.play();
+
+</script>
+</body>
+</html>
