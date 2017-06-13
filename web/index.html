@@ -34,7 +34,7 @@ function convertAscii(asciiText) {
       console.log('hit');
        if(tt.activeCues[0] !== undefined){
          var dynamicHTML = "id: " + tt.activeCues[0].id + ", ";
-         dynamicHTML += "text: " + convertAscii(tt.activeCues[0].text) + ", ";
+         dynamicHTML += tt.activeCues[0].value.key + ": " + convertAscii(tt.activeCues[0].text) + ", ";
          dynamicHTML += "startTime: " + tt.activeCues[0].startTime + ",  ";
          dynamicHTML += "endTime: " + tt.activeCues[0].endTime;
          document.getElementById("insertionPoint").innerHTML += dynamicHTML + "<br/>";
